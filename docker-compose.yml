@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+
+  server:
+    build: ./docker/server
+    container_name: server
+    ports:
+      - 80:80
+    networks:
+      - api-backend
+    volumes:
+      - ./:/application:cached
+
+  fpm:
+    build: ./docker/fpm
+    container_name: fpm
+    networks:
+      - api-backend
+    volumes:
+      - ./:/application:cached
+    env_file:
+      - .env
+
+  database:
+    image: mariadb
+    container_name: database
+    restart: always
+    volumes:
+      - mariadb:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - api-backend
+
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    networks:
+      - api-backend
+
+networks:
+
+  api-backend:
+    driver: bridge
+
+volumes:
+
+  mariadb:
+    driver: local
