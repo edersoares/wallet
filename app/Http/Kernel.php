@@ -3,6 +3,7 @@
 namespace Wallet\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Wallet\Http\Middleware\CustomResponseMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -40,6 +41,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+            CustomResponseMiddleware::class,
         ],
     ];
 

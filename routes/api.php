@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('wallets', 'WalletController@index');
+Route::post('wallets', 'WalletController@create');
+Route::get('wallets/{id}', 'WalletController@browse');
+Route::put('wallets/{id}', 'WalletController@update');
+Route::delete('wallets/{id}', 'WalletController@delete');
