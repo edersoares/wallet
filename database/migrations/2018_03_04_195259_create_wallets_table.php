@@ -14,7 +14,7 @@ class CreateWalletsTable extends Migration
     public function up()
     {
         Schema::create('wallets', function (Blueprint $table) {
-            $table->uuid('uuid');
+            $table->uuid('uuid')->unique();
             $table->uuid('user');
             $table->string('name', 32);
             $table->boolean('active');
