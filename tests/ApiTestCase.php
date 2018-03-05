@@ -88,18 +88,18 @@ trait ApiTestCase
      */
     public function testCreate()
     {
-        $wallet = factory($this->model())->make();
+        $model = factory($this->model())->make();
 
         $endpoint = $this->endpoint();
 
-        $this->post($endpoint, $wallet->toArray())
+        $this->post($endpoint, $model->toArray())
             ->assertStatus(201)
-            ->assertJsonFragment($wallet->toArray())
+            ->assertJsonFragment($model->toArray())
             ->assertJsonStructure([
                 'success', 'message', 'data'
             ]);
 
-        $this->assertDatabaseHas('wallets', $wallet->toArray());
+        $this->assertDatabaseHas($this->table(), $model->toArray());
     }
 
     /**
@@ -109,13 +109,13 @@ trait ApiTestCase
      */
     public function testBrowse()
     {
-        $wallet = factory($this->model())->create();
+        $model = factory($this->model())->create();
 
-        $endpoint = $this->endpoint($wallet->getKey());
+        $endpoint = $this->endpoint($model->getKey());
 
         $this->get($endpoint)
             ->assertStatus(200)
-            ->assertJsonFragment($wallet->toArray())
+            ->assertJsonFragment($model->toArray())
             ->assertJsonStructure([
                 'success', 'message', 'data'
             ]);
@@ -128,19 +128,19 @@ trait ApiTestCase
      */
     public function testUpdate()
     {
-        $wallet = factory($this->model())->create();
-        $walletNewData = factory($this->model())->make();
+        $model = factory($this->model())->create();
+        $modelNewData = factory($this->model())->make();
 
-        $endpoint = $this->endpoint($wallet->getKey());
+        $endpoint = $this->endpoint($model->getKey());
 
-        $this->put($endpoint, $walletNewData->toArray())
+        $this->put($endpoint, $modelNewData->toArray())
             ->assertStatus(200)
-            ->assertJsonFragment($walletNewData->toArray())
+            ->assertJsonFragment($modelNewData->toArray())
             ->assertJsonStructure([
                 'success', 'message', 'data'
             ]);
 
-        $this->assertDatabaseHas('wallets', $walletNewData->toArray());
+        $this->assertDatabaseHas($this->table(), $modelNewData->toArray());
     }
 
     /**
@@ -150,17 +150,17 @@ trait ApiTestCase
      */
     public function testDelete()
     {
-        $wallet = factory($this->model())->create();
+        $model = factory($this->model())->create();
 
-        $endpoint = $this->endpoint($wallet->getKey());
+        $endpoint = $this->endpoint($model->getKey());
 
         $this->delete($endpoint)
             ->assertStatus(200)
-            ->assertJsonFragment($wallet->toArray())
+            ->assertJsonFragment($model->toArray())
             ->assertJsonStructure([
                 'success', 'message', 'data'
             ]);
 
-        $this->assertDatabaseMissing('wallets', $wallet->toArray());
+        $this->assertDatabaseMissing($this->table(), $model->toArray());
     }
 }
