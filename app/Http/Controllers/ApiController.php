@@ -32,6 +32,8 @@ abstract class ApiController extends Controller
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Database\Eloquent\Model
+     *
+     * @throws \Throwable
      */
     public function create(Request $request)
     {
@@ -46,6 +48,8 @@ abstract class ApiController extends Controller
      * @param \Wallet\Support\Uuid $uuid
      *
      * @return \Illuminate\Database\Eloquent\Model
+     *
+     * @throws \Throwable
      */
     public function browse(Uuid $uuid)
     {
@@ -61,14 +65,15 @@ abstract class ApiController extends Controller
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Database\Eloquent\Model
+     *
+     * @throws \Throwable
      */
     public function update(Uuid $uuid, Request $request)
     {
-        $model = $this->model();
+        $model = $this->browse($uuid);
 
-        $model = $model::findOrFail((string) $uuid);
-
-        $model->update($request->all());
+        $model->fill($request->all());
+        $model->saveOrFail();
 
         return $model;
     }
@@ -79,12 +84,12 @@ abstract class ApiController extends Controller
      * @param \Wallet\Support\Uuid $uuid
      *
      * @return \Illuminate\Database\Eloquent\Model
+     *
+     * @throws \Throwable
      */
     public function delete(Uuid $uuid)
     {
-        $model = $this->model();
-
-        $model = $model::findOrFail((string) $uuid);
+        $model = $this->browse($uuid);
 
         $model->delete();
 

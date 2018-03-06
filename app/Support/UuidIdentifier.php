@@ -1,10 +1,10 @@
 <?php
 
-namespace Wallet\Support\Concerns;
+namespace Wallet\Support;
 
-use Wallet\Support\Uuid as UuidGenerator;
+use Webpatser\Uuid\Uuid;
 
-trait Uuid
+trait UuidIdentifier
 {
     /**
      * Check if the model needs to be booted and if so, do it.
@@ -27,10 +27,10 @@ trait Uuid
      *
      * @return void
      */
-    public static function bootUuid()
+    public static function bootUuidIdentifier()
     {
         self::creating(function ($model) {
-            $model->uuid = (string) UuidGenerator::generate(4);
+            $model->uuid = (string) Uuid::generate(4);
         });
     }
 }

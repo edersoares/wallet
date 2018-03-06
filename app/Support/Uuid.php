@@ -2,9 +2,9 @@
 
 namespace Wallet\Support;
 
-use Webpatser\Uuid\Uuid as Identifiable;
+use Webpatser\Uuid\Uuid as Identifier;
 
-class Uuid extends Identifiable
+class Uuid extends Identifier
 {
     //
 }

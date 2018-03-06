@@ -4,11 +4,11 @@ namespace Wallet;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Wallet\Support\Concerns\Uuid;
+use Wallet\Support\UuidIdentifier;
 
 class User extends Authenticatable
 {
-    use Notifiable, Uuid;
+    use Notifiable, UuidIdentifier;
 
     /**
      * The attributes that are mass assignable.
