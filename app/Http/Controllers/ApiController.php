@@ -2,7 +2,8 @@
 
 namespace Wallet\Http\Controllers;
 
-use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use Wallet\Support\Uuid;
 
 abstract class ApiController extends Controller
 {
@@ -28,43 +29,46 @@ abstract class ApiController extends Controller
     /**
      * POST /api/:endpoint
      *
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function create()
+    public function create(Request $request)
     {
         $model = $this->model();
 
-        return $model::create(Input::all());
+        return $model::create($request->all());
     }
 
     /**
      * GET /api/:endpoint/:uuid
      *
-     * @param string $uuid
+     * @param \Wallet\Support\Uuid $uuid
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function browse($uuid)
+    public function browse(Uuid $uuid)
     {
         $model = $this->model();
 
-        return $model::findOrFail($uuid);
+        return $model::findOrFail((string) $uuid);
     }
 
     /**
      * PUT /api/:endpoint/:uuid
      *
-     * @param string $uuid
+     * @param \Wallet\Support\Uuid     $uuid
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function update($uuid)
+    public function update(Uuid $uuid, Request $request)
     {
         $model = $this->model();
 
-        $model = $model::findOrFail($uuid);
+        $model = $model::findOrFail((string) $uuid);
 
-        $model->update(Input::all());
+        $model->update($request->all());
 
         return $model;
     }
@@ -72,15 +76,15 @@ abstract class ApiController extends Controller
     /**
      * DELETE /api/:endpoint/:uuid
      *
-     * @param string $uuid
+     * @param \Wallet\Support\Uuid $uuid
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function delete($uuid)
+    public function delete(Uuid $uuid)
     {
         $model = $this->model();
 
-        $model = $model::findOrFail($uuid);
+        $model = $model::findOrFail((string) $uuid);
 
         $model->delete();
 

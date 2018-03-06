@@ -11,6 +11,11 @@ class WalletsTest extends TestCase
 {
     use RefreshDatabase, ApiTestCase;
 
+    /**
+     * Return the model name.
+     *
+     * @return string
+     */
     protected function model()
     {
         return Wallet::class;

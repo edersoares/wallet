@@ -4,6 +4,7 @@ namespace Wallet;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Wallet\Support\Concerns\Uuid;
 
 class User extends Authenticatable
 {

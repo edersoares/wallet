@@ -1,8 +1,8 @@
 <?php
 
-namespace Wallet;
+namespace Wallet\Support\Concerns;
 
-use Webpatser\Uuid\Uuid as UuidGenerator;
+use Wallet\Support\Uuid as UuidGenerator;
 
 trait Uuid
 {

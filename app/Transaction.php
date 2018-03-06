@@ -3,6 +3,7 @@
 namespace Wallet;
 
 use Illuminate\Database\Eloquent\Model;
+use Wallet\Support\Concerns\Uuid;
 
 class Transaction extends Model
 {

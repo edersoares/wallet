@@ -4,7 +4,7 @@ namespace Wallet\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Webpatser\Uuid\Uuid;
+use Wallet\Support\Uuid;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -25,6 +25,10 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         Route::pattern('uuid', Uuid::VALID_UUID_REGEX);
+
+        Route::bind('uuid', function ($uuid) {
+            return Uuid::import($uuid);
+        });
 
         Route::macro('api', function ($endpoint, $controller) {
             Route::get($endpoint, "{$controller}@index")->name("{$endpoint}.index");
