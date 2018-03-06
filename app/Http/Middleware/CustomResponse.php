@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class CustomResponseMiddleware
+class CustomResponse
 {
     /**
      * Handle an incoming request.
