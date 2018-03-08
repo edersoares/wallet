@@ -32,6 +32,8 @@ services:
       - 3306:3306
     networks:
       - api-backend
+    env_file:
+      - .env
 
   redis:
     image: redis
