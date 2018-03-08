@@ -3,7 +3,7 @@
 namespace Wallet\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Wallet\Support\Uuid;
+use Ramsey\Uuid\Uuid;
 
 abstract class ApiController extends Controller
 {
@@ -45,7 +45,7 @@ abstract class ApiController extends Controller
     /**
      * GET /api/:endpoint/:uuid
      *
-     * @param \Wallet\Support\Uuid $uuid
+     * @param \Ramsey\Uuid\Uuid $uuid
      *
      * @return \Illuminate\Database\Eloquent\Model
      *
@@ -61,7 +61,7 @@ abstract class ApiController extends Controller
     /**
      * PUT /api/:endpoint/:uuid
      *
-     * @param \Wallet\Support\Uuid     $uuid
+     * @param \Ramsey\Uuid\Uuid   $uuid
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Database\Eloquent\Model
@@ -81,7 +81,7 @@ abstract class ApiController extends Controller
     /**
      * DELETE /api/:endpoint/:uuid
      *
-     * @param \Wallet\Support\Uuid $uuid
+     * @param \Ramsey\Uuid\Uuid $uuid
      *
      * @return \Illuminate\Database\Eloquent\Model
      *

@@ -2,7 +2,7 @@
 
 namespace Wallet\Support;
 
-use Webpatser\Uuid\Uuid;
+use Illuminate\Support\Str;
 
 trait UuidIdentifier
 {
@@ -30,7 +30,7 @@ trait UuidIdentifier
     public static function bootUuidIdentifier()
     {
         self::creating(function ($model) {
-            $model->uuid = (string) Uuid::generate(4);
+            $model->uuid = (string) Str::uuid();
         });
     }
 }
