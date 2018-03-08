@@ -17,6 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->uuid('uuid')->unique();
             $table->uuid('user');
             $table->uuid('wallet');
+            $table->uuid('category');
             $table->date('date');
             $table->decimal('value');
             $table->timestamps();
@@ -26,6 +27,9 @@ class CreateTransactionsTable extends Migration
                 ->references('uuid');
             $table->foreign('wallet')
                 ->on('wallets')
+                ->references('uuid');
+            $table->foreign('category')
+                ->on('categories')
                 ->references('uuid');
         });
     }

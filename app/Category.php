@@ -5,7 +5,7 @@ namespace Wallet;
 use Illuminate\Database\Eloquent\Model;
 use Wallet\Support\UuidIdentifier;
 
-class Transaction extends Model
+class Category extends Model
 {
     use UuidIdentifier;
 
@@ -15,7 +15,7 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = [
-        'user', 'wallet', 'category', 'date', 'value'
+        'name', 'active'
     ];
 
     /**
@@ -24,6 +24,6 @@ class Transaction extends Model
      * @var array
      */
     protected $casts = [
-        'value' => 'float',
+        'active' => 'boolean',
     ];
 }

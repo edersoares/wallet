@@ -10,6 +10,7 @@ $factory->define(Wallet\Transaction::class, function (Faker $faker) {
                 'user' => $data['user']
             ])->getKey();
         },
+        'category' => factory(Wallet\Category::class)->create()->getKey(),
         'date' => $faker->date('Y-m-d'),
         'value' => $faker->randomFloat(2, 100, 10000),
     ];
