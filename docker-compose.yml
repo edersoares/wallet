@@ -5,6 +5,7 @@ services:
   server:
     build: ./docker/server
     container_name: server
+    working_dir: /application
     ports:
       - 80:80
     networks:
@@ -15,6 +16,7 @@ services:
   fpm:
     build: ./docker/fpm
     container_name: fpm
+    working_dir: /application
     networks:
       - api-backend
     volumes:
