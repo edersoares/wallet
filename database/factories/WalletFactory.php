@@ -6,6 +6,6 @@ $factory->define(Wallet\Wallet::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'active' => $faker->boolean,
-        'user' => factory(Wallet\User::class)->create()->getKey(),
+        'user_uuid' => factory(Wallet\User::class)->create()->getKey(),
     ];
 });

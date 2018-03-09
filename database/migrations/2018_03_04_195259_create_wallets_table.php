@@ -15,12 +15,12 @@ class CreateWalletsTable extends Migration
     {
         Schema::create('wallets', function (Blueprint $table) {
             $table->uuid('uuid')->unique();
-            $table->uuid('user');
+            $table->uuid('user_uuid');
             $table->string('name', 32);
             $table->boolean('active');
             $table->timestamps();
             $table->primary('uuid');
-            $table->foreign('user')
+            $table->foreign('user_uuid')
                 ->on('users')
                 ->references('uuid');
         });

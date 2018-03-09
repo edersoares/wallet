@@ -15,20 +15,20 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('uuid')->unique();
-            $table->uuid('user');
-            $table->uuid('wallet');
-            $table->uuid('category');
+            $table->uuid('user_uuid');
+            $table->uuid('wallet_uuid');
+            $table->uuid('category_uuid');
             $table->date('date');
             $table->decimal('value');
             $table->timestamps();
             $table->primary('uuid');
-            $table->foreign('user')
+            $table->foreign('user_uuid')
                 ->on('users')
                 ->references('uuid');
-            $table->foreign('wallet')
+            $table->foreign('wallet_uuid')
                 ->on('wallets')
                 ->references('uuid');
-            $table->foreign('category')
+            $table->foreign('category_uuid')
                 ->on('categories')
                 ->references('uuid');
         });
