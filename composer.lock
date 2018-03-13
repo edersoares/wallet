@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a529934503639f8c6783b21b7efe77f1",
+    "content-hash": "ed8df606990f5496197ad4c7cd27c700",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -208,6 +208,54 @@
                 "schedule"
             ],
             "time": "2017-10-12T15:59:13+00:00"
+        },
+        {
+            "name": "edersoares/eloquent-uuid",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/edersoares/eloquent-uuid.git",
+                "reference": "f87414014f72f8b86c594789ae69655e71841a8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/edersoares/eloquent-uuid/zipball/f87414014f72f8b86c594789ae69655e71841a8d",
+                "reference": "f87414014f72f8b86c594789ae69655e71841a8d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.5",
+                "illuminate/support": "~5.5",
+                "php": "~7.0",
+                "ramsey/uuid": "~3.7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nix\\Eloquent\\Uuid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eder Soares",
+                    "email": "edersoares@me.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple package to use universally unique identifiers (UUID) in Eloquent models.",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "uuid"
+            ],
+            "time": "2018-03-12T23:23:13+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -455,16 +503,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.9",
+            "version": "v5.6.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "98fdbb098cf52a74441fe949be121c18e3dbbe6a"
+                "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/98fdbb098cf52a74441fe949be121c18e3dbbe6a",
-                "reference": "98fdbb098cf52a74441fe949be121c18e3dbbe6a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
+                "reference": "195ba6a67bdad2a23105c7ab410cd43e0f20bb73",
                 "shasum": ""
             },
             "require": {
@@ -475,7 +523,7 @@
                 "ext-openssl": "*",
                 "league/flysystem": "~1.0",
                 "monolog/monolog": "~1.12",
-                "nesbot/carbon": "^1.22.1",
+                "nesbot/carbon": "^1.24.1",
                 "php": "^7.1.3",
                 "psr/container": "~1.0",
                 "psr/simple-cache": "^1.0",
@@ -589,7 +637,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-03-07T14:04:49+00:00"
+            "time": "2018-03-09T16:53:27+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -818,20 +866,20 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.24.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65"
+                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bba6c6e410c6b4317e37a9474aeaa753808c3875",
+                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.3.9",
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
@@ -867,7 +915,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-02-28T09:22:05+00:00"
+            "time": "2018-03-10T10:10:14+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4010,7 +4058,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "edersoares/eloquent-uuid": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -3,11 +3,11 @@
 namespace Wallet;
 
 use Illuminate\Database\Eloquent\Model;
-use Wallet\Support\UuidIdentifier;
+use Nix\Eloquent\Uuid\Uuid;
 
 class Wallet extends Model
 {
-    use UuidIdentifier;
+    use Uuid;
 
     /**
      * The attributes that are mass assignable.
