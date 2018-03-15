@@ -8,7 +8,6 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-window.ElementUI = require('element-ui');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,8 +16,6 @@ window.ElementUI = require('element-ui');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-Vue.use(ElementUI);
 
 const app = new Vue({
     el: '#app'
