@@ -4,13 +4,30 @@ namespace Wallet\Support\Calculators;
 
 class IrpfCalculator
 {
+    /**
+     * Aliquots.
+     *
+     * @var array
+     */
     protected $aliquots;
 
+    /**
+     * IrpfCalculator constructor.
+     *
+     * @param array $aliquots
+     */
     public function __construct($aliquots)
     {
         $this->aliquots = $aliquots;
     }
 
+    /**
+     * Return the aliquot percent value.
+     *
+     * @param float $value
+     *
+     * @return float
+     */
     public function calculateAliquot($value)
     {
         return array_reduce($this->aliquots, function ($current, $aliquot) use ($value) {
@@ -20,6 +37,13 @@ class IrpfCalculator
         }, 0);
     }
 
+    /**
+     * Return the deductible value.
+     *
+     * @param float $value
+     *
+     * @return float
+     */
     public function calculateDeductibleValue($value)
     {
         return array_reduce($this->aliquots, function ($current, $aliquot) use ($value) {
@@ -29,6 +53,13 @@ class IrpfCalculator
         }, 0);
     }
 
+    /**
+     * Return the tax value.
+     *
+     * @param float $value
+     *
+     * @return float
+     */
     public function calculate($value)
     {
         $aliquot = $this->calculateAliquot($value);

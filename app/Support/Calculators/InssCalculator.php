@@ -4,13 +4,28 @@ namespace Wallet\Support\Calculators;
 
 class InssCalculator
 {
+    /**
+     * Aliquots.
+     *
+     * @var array
+     */
     protected $aliquots;
 
+    /**
+     * InssCalculator constructor.
+     *
+     * @param array $aliquots
+     */
     public function __construct($aliquots)
     {
         $this->aliquots = $aliquots;
     }
 
+    /**
+     * Return the max aliquot percent value.
+     *
+     * @return float
+     */
     public function getMaxAliquot()
     {
         return array_reduce($this->aliquots, function ($current, $aliquot) {
@@ -18,6 +33,11 @@ class InssCalculator
         });
     }
 
+    /**
+     * Return the ceiling value.
+     *
+     * @return float
+     */
     public function getCeiling()
     {
         return array_reduce($this->aliquots, function ($current, $aliquot) {
@@ -25,26 +45,47 @@ class InssCalculator
         });
     }
 
-    public function isCeiling($salary)
+    /**
+     * Indicate if value is greater than ceiling.
+     *
+     * @param float $value
+     *
+     * @return bool
+     */
+    public function isCeiling($value)
     {
-        return $salary > $this->getCeiling();
+        return $value > $this->getCeiling();
     }
 
-    public function calculateAliquot($salary)
+    /**
+     * Return the aliquot percent value.
+     *
+     * @param float $value
+     *
+     * @return float
+     */
+    public function calculateAliquot($value)
     {
-        return array_reduce($this->aliquots, function ($current, $aliquot) use ($salary) {
-            return $salary >= $aliquot['min'] && $salary <= $aliquot['max']
+        return array_reduce($this->aliquots, function ($current, $aliquot) use ($value) {
+            return $value >= $aliquot['min'] && $value <= $aliquot['max']
                 ? $aliquot['aliquot']
                 : $current;
         }, $this->getMaxAliquot());
     }
 
-    public function calculateValue($salary)
+    /**
+     * Return the tax value.
+     *
+     * @param float $value
+     *
+     * @return float
+     */
+    public function calculateValue($value)
     {
-        if ($this->isCeiling($salary)) {
+        if ($this->isCeiling($value)) {
             return round($this->getCeiling() * $this->getMaxAliquot() / 100, 2);
         }
 
-        return round($salary * $this->calculateAliquot($salary) / 100, 2);
+        return round($value * $this->calculateAliquot($value) / 100, 2);
     }
 }
