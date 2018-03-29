@@ -64,19 +64,18 @@ class SalaryCompareCommand extends Command
 
                 return [
                     $value,
-                    $total,
-                    $total + $salary['irpf']['value'],
                     $salary['inss']['value'],
                     $salary['irpf']['value'],
-                    $salary['liquid'],
                     $fgts,
                     $thirteenth,
                     $vacations,
+                    $total,
+                    $salary['liquid'],
                 ];
             })->toArray();
 
         $this->table([
-            'Salary', 'Total', 'Total + IRPF', 'INSS (-)', 'IRPF (-)', 'Liquid (+)', 'FGTS (+)', 'Thirteenth (+)', 'Vacations (+)'
+            'Salary', 'INSS (-)', 'IRPF (-)', 'FGTS (+)', 'Thirteenth (+)', 'Vacations (+)', 'Total', 'Liquid',
         ], $salaries);
     }
 }
